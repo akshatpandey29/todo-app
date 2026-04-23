@@ -1,26 +1,169 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e5e7eb;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* NAVBAR */
+.navbar {
+  width: 100%;
+  padding: 18px 40px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  font-size: 20px;
+  font-weight: 600;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* MAIN CARD */
+.toDoList {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+  padding: 32px;
+  margin-top: 100px;
+  border-radius: 24px;
+  width: 400px;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* TITLE */
+.toDoList h1 {
+  margin-bottom: 18px;
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* INPUT */
+.toDoList input {
+  width: 88%;
+  padding: 13px;
+  border: none;
+  border-radius: 12px;
+  outline: none;
+  margin-bottom: 14px;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.toDoList input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.toDoList input:focus {
+  background: rgba(255, 255, 255, 0.12);
+  transform: scale(1.02);
+}
+
+/* BUTTON BASE */
+.toDoList button {
+  padding: 10px 14px;
+  margin: 6px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s ease;
+  font-size: 13px;
+}
+
+/* ADD BUTTON (first button) */
+.toDoList button:first-of-type {
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: white;
+}
+
+.toDoList button:first-of-type:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* CLEAR BUTTON */
+.clear-btn {
+  background: linear-gradient(135deg, #ef4444, #f97316);
+  color: white;
+}
+
+.clear-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* TASK LIST */
+ol {
+  padding: 0;
+  margin-top: 22px;
+}
+
+/* TASK ITEM */
+li {
+  list-style: none;
+  background: rgba(255, 255, 255, 0.07);
+  margin: 10px 0;
+  padding: 14px;
+  border-radius: 14px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+li:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+  background: linear-gradient(135deg, #f43f5e, #ef4444);
+  color: white;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 10px;
+}
+
+.delete-btn:hover {
+  transform: scale(1.15);
+}
+
+/* OPTIONAL: SMOOTH SCROLL FEEL */
+* {
+  scroll-behavior: smooth;
 }
